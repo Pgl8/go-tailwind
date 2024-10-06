@@ -1,6 +1,7 @@
 package main
 
 import (
+	"go-tailwind/handler"
 	"log/slog"
 	"net/http"
 	"os"
@@ -15,14 +16,8 @@ func main() {
 	}
 	router := chi.NewMux()
 
-	router.Get("/healthcheck", handleHealthcheck())
+	router.Get("/healthcheck", handler.HandleHealthCheck)
 	listenPort := os.Getenv("LISTEN_PORT")
 	slog.Info("Server is running", "listenAddr", listenPort)
 	http.ListenAndServe(listenPort, router)
-}
-
-func handleHealthcheck() http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Everything is fine!"))
-	}
 }
