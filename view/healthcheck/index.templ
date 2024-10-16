@@ -1,14 +1,13 @@
 package healthcheck
 
+import "go-tailwind/view/layout"
+
 templ Index() {
-    <html>
-        <head>
-        <title>Health Check</title>
-        </head>
-        <body>
-        <h1>Health Check</h1>
-        <p>Service is up and running</p>
-        </body>
-    </html>
+    @layout.Base() {
+        <div>
+            <h2>Health Check</h2>
+            <p>Everything is fine!</p>
+        </div>
+    }
 }
 

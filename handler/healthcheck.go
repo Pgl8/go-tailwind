@@ -6,6 +6,5 @@ import (
 )
 
 func HandleHealthCheck(w http.ResponseWriter, r *http.Request) error {
-	healthcheck.Index().Render(r.Context(), w)
-	return nil
+	return Render(w, r, healthcheck.Index())
 }
