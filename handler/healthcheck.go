@@ -1,8 +1,11 @@
 package handler
 
-import "net/http"
+import (
+	"go-tailwind/view/healthcheck"
+	"net/http"
+)
 
-func HandleHealthCheck(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Everything looks fine!"))
+func HandleHealthCheck(w http.ResponseWriter, r *http.Request) error {
+	healthcheck.Index().Render(r.Context(), w)
+	return nil
 }

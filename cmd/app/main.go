@@ -16,7 +16,7 @@ func main() {
 	}
 	router := chi.NewMux()
 
-	router.Get("/healthcheck", handler.HandleHealthCheck)
+	router.Get("/healthcheck", handler.Make(handler.HandleHealthCheck))
 	listenPort := os.Getenv("LISTEN_PORT")
 	slog.Info("Server is running", "listenAddr", listenPort)
 	http.ListenAndServe(listenPort, router)
